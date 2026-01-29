@@ -98,15 +98,17 @@ class Solution:
         first_row_zero = False              # 记录第 0 行是否需要清零
         first_col_zero = False              # 记录第 0 列是否需要清零
 
-        # 检查第 0 行是否包含 0
+        # 检查第 0 列是否包含 0【i代表行】
+        for i in range(m):
+            if matrix[i][0] == 0:
+                first_col_zero = True
+
+        # 检查第 0 行是否包含 0【j代表列】
         for j in range(n):
             if matrix[0][j] == 0:
                 first_row_zero = True
 
-        # 检查第 0 列是否包含 0
-        for i in range(m):
-            if matrix[i][0] == 0:
-                first_col_zero = True
+
 
         # 用第 0 行和第 0 列作为标记
         for i in range(1, m):
