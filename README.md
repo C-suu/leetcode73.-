@@ -94,40 +94,31 @@ class Solution:
     def setZeroes(self, matrix):
         m = len(matrix)                     # 获取矩阵的行数
         n = len(matrix[0])                  # 获取矩阵的列数
-
         first_row_zero = False              # 记录第 0 行是否需要清零
         first_col_zero = False              # 记录第 0 列是否需要清零
-
         # 检查第 0 列是否包含 0【i代表行】
         for i in range(m):
             if matrix[i][0] == 0:
                 first_col_zero = True
-
         # 检查第 0 行是否包含 0【j代表列】
         for j in range(n):
             if matrix[0][j] == 0:
                 first_row_zero = True
-
-
-
         # 用第 0 行和第 0 列作为标记
         for i in range(1, m):
             for j in range(1, n):
                 if matrix[i][j] == 0:
                     matrix[i][0] = 0        # 标记该行需要清零
                     matrix[0][j] = 0        # 标记该列需要清零
-
         # 根据标记清零内部区域
         for i in range(1, m):
             for j in range(1, n):
                 if matrix[i][0] == 0 or matrix[0][j] == 0:
                     matrix[i][j] = 0
-
         # 如果第 0 行需要清零
         if first_row_zero:
             for j in range(n):
                 matrix[0][j] = 0
-
         # 如果第 0 列需要清零
         if first_col_zero:
             for i in range(m):
